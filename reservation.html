@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>予約 | 寿司 博多魚がし</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page" data-title="meta.title.reservation">
+
+    <!-- =========================
+         Header
+    ========================== -->
+    <header class="header">
+
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-main">博多魚がし</span>
+                <span class="logo-sub">SUSHI</span>
+            </a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+            aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="site-nav">
+
+            <a href="index.html" data-i18n="nav.home">ホーム</a>
+
+            <a href="menu.html" data-i18n="nav.menu">メニュー</a>
+
+            <a href="index.html#about" data-i18n="nav.about">私たちについて</a>
+
+            <a href="index.html#access" data-i18n="nav.access">アクセス</a>
+
+            <a href="reservation.html" class="nav-reservation" data-i18n="nav.reservation">予約する</a>
+
+            <!-- Language switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"
+                    data-i18n-aria="lang.label" aria-label="言語を選択">
+                    <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18" />
+                        <path d="M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" />
+                    </svg>
+                    <span id="lang-current">JA</span>
+                    <svg class="lang-caret" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor"
+                        stroke-width="1.4" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" />
+                    </svg>
+                </button>
+                <ul class="lang-menu" role="list">
+                    <li><button type="button" data-lang="ja" lang="ja">日本語</button></li>
+                    <li><button type="button" data-lang="en" lang="en">English</button></li>
+                    <li><button type="button" data-lang="zh" lang="zh-CN">中文</button></li>
+                    <li><button type="button" data-lang="ko" lang="ko">한국어</button></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             Page hero (with shop photo)
+        ========================== -->
+        <section class="page-hero has-image"
+            style="background-image:url(https://www.hakata-1bangai.com/data/shops/13/13_2_m.jpg)">
+            <p class="page-hero-label">ONLINE RESERVATION</p>
+            <h1 data-i18n="res.title">ご予約</h1>
+            <p class="page-hero-lead" data-i18n="res.lead">ご希望の日時・人数・テーブルを選び、お客様情報をご入力ください。</p>
+        </section>
+
+
+        <!-- =========================
+             Gallery: shop & dishes
+        ========================== -->
+        <section class="res-gallery section">
+
+            <div class="section-title center reveal">
+                <p>THE SHOP</p>
+                <h2 data-i18n="res.gallery.title">お店とお料理のご紹介</h2>
+            </div>
+
+            <div class="res-gallery-grid">
+
+                <figure class="res-fig reveal">
+                    <img onerror="this.style.visibility='hidden'"
+                        src="https://www.hakata-1bangai.com/data/shops/13/13_2_m.jpg" alt="寿司 博多魚がし">
+                    <figcaption data-i18n="res.cap.shop">博多1番街の店舗</figcaption>
+                </figure>
+
+                <figure class="res-fig reveal">
+                    <img onerror="this.style.visibility='hidden'" loading="lazy"
+                        src="https://www.hakata-1bangai.com/data/recommends/225/225_1_l.jpg" alt="Maguro Zukushi">
+                    <figcaption data-i18n="menu1.name">まぐろづくし</figcaption>
+                </figure>
+
+                <figure class="res-fig reveal">
+                    <img onerror="this.style.visibility='hidden'" loading="lazy"
+                        src="https://www.hakata-1bangai.com/data/recommends/296/296_1_l.jpg" alt="Dontaku Set">
+                    <figcaption data-i18n="menu2.name">どんたくセット</figcaption>
+                </figure>
+
+                <figure class="res-fig reveal">
+                    <img onerror="this.style.visibility='hidden'" loading="lazy"
+                        src="https://www.hakata-1bangai.com/data/recommends/227/227_1_l.jpg" alt="Sashimi 5 Pieces">
+                    <figcaption data-i18n="menu3.name">刺身5点盛り</figcaption>
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Reservation form
+        ========================== -->
+        <section class="res-main section">
+
+            <!-- Steps -->
+            <div class="res-steps">
+                <div class="res-step active">
+                    <span class="res-step-no">1</span>
+                    <span data-i18n="res.step1">ご予約情報</span>
+                </div>
+                <div class="res-step-line"></div>
+                <div class="res-step">
+                    <span class="res-step-no">2</span>
+                    <span data-i18n="res.step2">メニュー</span>
+                </div>
+                <div class="res-step-line"></div>
+                <div class="res-step">
+                    <span class="res-step-no">3</span>
+                    <span data-i18n="res.step3">確認</span>
+                </div>
+                <div class="res-step-line"></div>
+                <div class="res-step">
+                    <span class="res-step-no">4</span>
+                    <span data-i18n="res.step4">完了</span>
+                </div>
+            </div>
+
+            <div class="res-layout">
+
+                <!-- Shop info -->
+                <aside class="res-side">
+                    <div class="res-side-img">
+                        <img onerror="this.style.visibility='hidden'"
+                            src="https://www.hakata-1bangai.com/data/shops/13/13_2_m.jpg" alt="寿司 博多魚がし">
+                    </div>
+                    <div class="res-side-body">
+                        <h2 data-i18n="res.side.title">お店のご案内</h2>
+                        <h3 data-i18n="access.name">寿司 博多魚がし</h3>
+                        <dl class="access-list">
+                            <div>
+                                <dt data-i18n="contact.address.label">住所</dt>
+                                <dd data-i18n="access.address">福岡県福岡市博多区博多駅中央街1-1<br>JR博多駅 B1F 博多1番街内</dd>
+                            </div>
+                            <div>
+                                <dt data-i18n="access.tel">TEL</dt>
+                                <dd><a href="tel:0924135223">092-413-5223</a></dd>
+                            </div>
+                            <div>
+                                <dt data-i18n="access.hours.label">営業時間</dt>
+                                <dd data-i18n="access.hours">11:00 ～ 21:30（L.O. 21:00）</dd>
+                            </div>
+                            <div>
+                                <dt data-i18n="access.seats.label">席数</dt>
+                                <dd data-i18n="access.seats">24席（終日禁煙）</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </aside>
+
+                <!-- Form card -->
+                <form class="res-card" id="reservation-form" novalidate>
+
+                    <!-- DATE / TIME -->
+                    <section class="form-section">
+                        <h2 class="form-section-title" data-i18n="res.sec.datetime">ご来店日時</h2>
+
+                        <div class="form-row">
+
+                            <div class="form-group" id="group-date">
+                                <label for="reservationDate">
+                                    <span data-i18n="res.date">ご来店日</span>
+                                    <span class="required" data-i18n="res.required">必須</span>
+                                </label>
+                                <input type="date" id="reservationDate" required>
+                                <p class="field-error" id="err-date" role="alert" hidden></p>
+                            </div>
+
+                            <div class="form-group" id="group-time">
+                                <label for="reservationTime">
+                                    <span data-i18n="res.time">ご来店時間</span>
+                                    <span class="required" data-i18n="res.required">必須</span>
+                                </label>
+                                <select id="reservationTime" required>
+                                    <option value="" data-i18n="res.time.ph">時間を選択してください</option>
+                                </select>
+                                <p class="field-error" id="err-time" role="alert" hidden></p>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- GUEST COUNT -->
+                    <section class="form-section">
+                        <h2 class="form-section-title" data-i18n="res.sec.guests">ご利用人数</h2>
+
+                        <div class="guest-selector">
+                            <button type="button" class="guest-button" id="minusGuest" aria-label="−">−</button>
+                            <span id="guestCount" aria-live="polite">2名</span>
+                            <button type="button" class="guest-button" id="plusGuest" aria-label="＋">＋</button>
+                        </div>
+                    </section>
+
+                    <!-- CUSTOMER DETAILS -->
+                    <section class="form-section">
+                        <h2 class="form-section-title" data-i18n="res.sec.contact">お客様情報</h2>
+
+                        <div class="form-row">
+
+                            <div class="form-group" id="group-name">
+                                <label for="customerName">
+                                    <span data-i18n="res.name">お名前</span>
+                                    <span class="required" data-i18n="res.required">必須</span>
+                                </label>
+                                <input type="text" id="customerName" name="name" autocomplete="name" maxlength="60"
+                                    placeholder="例）博多 太郎" required>
+                                <p class="field-error" id="err-name" role="alert" hidden></p>
+                            </div>
+
+                            <div class="form-group" id="group-phone">
+                                <label for="customerPhone">
+                                    <span data-i18n="res.phone">電話番号</span>
+                                    <span class="required" data-i18n="res.required">必須</span>
+                                </label>
+                                <input type="tel" id="customerPhone" name="phone" autocomplete="tel" inputmode="tel"
+                                    maxlength="20" placeholder="例）090-1234-5678" required>
+                                <p class="field-hint" data-i18n="res.phone.hint">ご予約確認のご連絡にのみ使用します。</p>
+                                <p class="field-error" id="err-phone" role="alert" hidden></p>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- TABLE -->
+                    <section class="form-section">
+                        <h2 class="form-section-title" data-i18n="res.sec.table">テーブルを選択</h2>
+
+                        <div class="table-message" data-i18n="res.table.msg">
+                            ご利用人数に合わせてご希望のテーブルを選択してください。
+                        </div>
+
+                        <div class="table-list" id="tableList">
+                            <div class="table-card" data-table="A" data-seats="2" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table A</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                            <div class="table-card" data-table="B" data-seats="2" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table B</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                            <div class="table-card" data-table="C" data-seats="4" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table C</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                            <div class="table-card" data-table="D" data-seats="4" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table D</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                            <div class="table-card" data-table="E" data-seats="6" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table E</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                            <div class="table-card" data-table="F" data-seats="6" tabindex="0" role="button">
+                                <div class="table-icon"></div>
+                                <div class="table-name">Table F</div>
+                                <div class="table-seats"></div>
+                                <div class="table-status"></div>
+                            </div>
+                        </div>
+
+                        <p class="field-error" id="err-table" role="alert" hidden></p>
+
+                        <div class="selected-table-info" id="selectedTableInfo">
+                            <span id="selectedTableLabel">選択したテーブル：</span>
+                            <strong id="selectedTableName">-</strong>
+                        </div>
+                    </section>
+
+                    <!-- SUBMIT -->
+                    <button type="submit" class="reservation-submit" id="nextButton" data-i18n="res.next">
+                        メニュー選択へ進む
+                    </button>
+
+                    <p class="reservation-notice" data-i18n="res.notice">
+                        ※ ご予約時間から15分以上遅れる場合は、お電話にてご連絡ください。<br>
+                        ※ ご予約内容は次の画面でご確認いただけます。<br>
+                        ※ 店内は終日禁煙です。
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+    <footer class="footer">
+
+        <div class="footer-logo" data-i18n="footer.name">寿司 博多魚がし</div>
+
+        <div class="footer-links">
+            <a href="index.html" data-i18n="footer.home">ホーム</a>
+            <a href="menu.html" data-i18n="footer.menu">メニュー</a>
+            <a href="reservation.html" data-i18n="footer.reservation">予約</a>
+            <a href="contact.html" data-i18n="footer.contactLink">お問い合わせ</a>
+        </div>
+
+        <p class="copyright">© 2026 寿司 博多魚がし. All Rights Reserved.</p>
+
+    </footer>
+
+    <!-- Fixed vertical contact tab -->
+    <a href="contact.html" class="side-contact" data-i18n="footer.vertical">ーお問い合わせー</a>
+
+    <script src="js/i18n.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            var MAX_GUESTS = 10;
+            var RESERVED_TABLE = 'D';   // demo: table already reserved
+
+            var guests = 2;
+            var selectedTable = null;
+
+            var $ = function (id) { return document.getElementById(id); };
+            var T = function (key) { return window.siteT ? (window.siteT(key) || '') : ''; };
+            var fmt = function (key, n) { return T(key).replace('{n}', n); };
+
+            var form = $('reservation-form');
+            var dateInput = $('reservationDate');
+            var timeSelect = $('reservationTime');
+            var nameInput = $('customerName');
+            var phoneInput = $('customerPhone');
+            var guestDisplay = $('guestCount');
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.table-card'));
+            var infoBox = $('selectedTableInfo');
+
+            /* ---------- Time options (11:00 – 21:00, every 30 min) ---------- */
+            for (var h = 11; h <= 21; h++) {
+                [0, 30].forEach(function (m) {
+                    if (h === 21 && m === 30) return;
+                    var v = (h < 10 ? '0' : '') + h + ':' + (m === 0 ? '00' : '30');
+                    var o = document.createElement('option');
+                    o.value = v;
+                    o.textContent = v;
+                    timeSelect.appendChild(o);
+                });
+            }
+
+            /* ---------- Date: minimum = today (local time) ---------- */
+            (function () {
+                var d = new Date();
+                var y = d.getFullYear();
+                var mo = ('0' + (d.getMonth() + 1)).slice(-2);
+                var da = ('0' + d.getDate()).slice(-2);
+                dateInput.min = y + '-' + mo + '-' + da;
+            })();
+
+            /* ---------- Seat icon: table + chairs drawn as SVG ---------- */
+            function seatIcon(n) {
+                var svg = '<svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">' +
+                    '<circle cx="32" cy="32" r="13" fill="none" stroke="currentColor" stroke-width="2"/>';
+                for (var i = 0; i < n; i++) {
+                    var a = (i * 2 * Math.PI / n) - Math.PI / 2;
+                    var x = (32 + 24 * Math.cos(a)).toFixed(1);
+                    var y = (32 + 24 * Math.sin(a)).toFixed(1);
+                    svg += '<circle cx="' + x + '" cy="' + y + '" r="5" fill="currentColor"/>';
+                }
+                return svg + '</svg>';
+            }
+            cards.forEach(function (c) {
+                c.querySelector('.table-icon').innerHTML = seatIcon(Number(c.dataset.seats));
+            });
+
+            /* ---------- Errors ---------- */
+            function showError(field, key) {
+                var el = $('err-' + field);
+                var group = $('group-' + field);
+                el.setAttribute('data-i18n', key);
+                el.textContent = T(key);
+                el.hidden = false;
+                if (group) group.classList.add('invalid');
+            }
+            function clearError(field) {
+                var el = $('err-' + field);
+                var group = $('group-' + field);
+                el.removeAttribute('data-i18n');
+                el.textContent = '';
+                el.hidden = true;
+                if (group) group.classList.remove('invalid');
+            }
+
+            /* ---------- Table availability ---------- */
+            function setStatus(card, key, free) {
+                var st = card.querySelector('.table-status');
+                st.setAttribute('data-i18n', key);
+                st.textContent = T(key);
+                card.classList.toggle('unavailable', !free);
+            }
+
+            function updateTables() {
+                cards.forEach(function (card) {
+                    var seats = Number(card.dataset.seats);
+                    card.setAttribute('aria-disabled', 'false');
+                    if (card.dataset.table === RESERVED_TABLE) {
+                        setStatus(card, 'res.status.full', false);
+                    } else if (seats < guests) {
+                        setStatus(card, 'res.status.over', false);
+                    } else {
+                        setStatus(card, 'res.status.free', true);
+                    }
+                    if (card.classList.contains('unavailable')) {
+                        card.setAttribute('aria-disabled', 'true');
+                        if (card.dataset.table === selectedTable) selectedTable = null;
+                        card.classList.remove('selected');
+                    }
+                });
+                renderSelected();
+            }
+
+            function renderSelected() {
+                if (selectedTable) {
+                    $('selectedTableLabel').textContent = T('res.table.selected');
+                    $('selectedTableName').textContent = 'Table ' + selectedTable;
+                    infoBox.classList.add('show');
+                } else {
+                    infoBox.classList.remove('show');
+                }
+            }
+
+            /* ---------- Text that needs a number inserted ---------- */
+            function render() {
+                guestDisplay.textContent = fmt('res.guests.fmt', guests);
+                cards.forEach(function (c) {
+                    c.querySelector('.table-seats').textContent = fmt('res.seats.fmt', c.dataset.seats);
+                });
+                nameInput.placeholder = T('res.name.ph');
+                phoneInput.placeholder = T('res.phone.ph');
+                renderSelected();
+            }
+
+            /* ---------- Guest count ---------- */
+            $('minusGuest').addEventListener('click', function () {
+                if (guests > 1) { guests--; render(); updateTables(); }
+            });
+            $('plusGuest').addEventListener('click', function () {
+                if (guests < MAX_GUESTS) { guests++; render(); updateTables(); }
+            });
+
+            /* ---------- Table selection ---------- */
+            function pick(card) {
+                if (card.classList.contains('unavailable')) return;
+                cards.forEach(function (c) { c.classList.remove('selected'); });
+                card.classList.add('selected');
+                selectedTable = card.dataset.table;
+                clearError('table');
+                renderSelected();
+            }
+            cards.forEach(function (card) {
+                card.addEventListener('click', function () { pick(card); });
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(card); }
+                });
+            });
+
+            /* ---------- Clear errors while typing ---------- */
+            dateInput.addEventListener('change', function () { clearError('date'); });
+            timeSelect.addEventListener('change', function () { clearError('time'); });
+            nameInput.addEventListener('input', function () { clearError('name'); });
+            phoneInput.addEventListener('input', function () { clearError('phone'); });
+
+            /* ---------- Phone validation (accepts full-width digits, hyphens, spaces) ---------- */
+            function normalizePhone(v) {
+                return v.replace(/[０-９]/g, function (c) {
+                    return String.fromCharCode(c.charCodeAt(0) - 0xFEE0);
+                }).replace(/[\s\-()（）－ー]/g, '');
+            }
+            function phoneOk(v) {
+                return /^\+?\d{9,15}$/.test(normalizePhone(v));
+            }
+
+            /* ---------- Submit ---------- */
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                ['date', 'time', 'name', 'phone', 'table'].forEach(clearError);
+
+                var firstBad = null;
+                function bad(field, key, focusEl) {
+                    showError(field, key);
+                    if (!firstBad) firstBad = focusEl;
+                }
+
+                if (!dateInput.value) bad('date', 'res.err.date', dateInput);
+                if (!timeSelect.value) bad('time', 'res.err.time', timeSelect);
+                if (!nameInput.value.trim()) bad('name', 'res.err.name', nameInput);
+                if (!phoneOk(phoneInput.value)) bad('phone', 'res.err.phone', phoneInput);
+                if (!selectedTable) bad('table', 'res.err.table', cards[0]);
+
+                if (firstBad) {
+                    firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstBad.focus({ preventScroll: true });
+                    return;
+                }
+
+                var data = {
+                    date: dateInput.value,
+                    time: timeSelect.value,
+                    guests: guests,
+                    table: selectedTable,
+                    name: nameInput.value.trim(),
+                    phone: normalizePhone(phoneInput.value)
+                };
+
+                try {
+                    localStorage.setItem('reservationData', JSON.stringify(data));
+                } catch (err) { /* storage unavailable: continue anyway */ }
+
+                window.location.href = 'menu.html';
+            });
+
+            /* ---------- Language change ---------- */
+            document.addEventListener('langchange', function () {
+                render();
+            });
+
+            /* ---------- Init ---------- */
+            render();
+            updateTables();
+        })();
+    </script>
+</body>
+
+</html>

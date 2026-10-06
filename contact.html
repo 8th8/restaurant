@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>お問い合わせ | 寿司 博多魚がし</title>
+    <meta name="description" content="寿司 博多魚がし（JR博多駅 博多1番街）へのお問い合わせ。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page" data-title="meta.title.contact">
+
+    <!-- =========================
+         Header
+    ========================== -->
+    <header class="header">
+
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-main">博多魚がし</span>
+                <span class="logo-sub">SUSHI</span>
+            </a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+            aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="site-nav">
+
+            <a href="index.html" data-i18n="nav.home">ホーム</a>
+
+            <a href="menu.html" data-i18n="nav.menu">メニュー</a>
+
+            <a href="index.html#about" data-i18n="nav.about">私たちについて</a>
+
+            <a href="index.html#access" data-i18n="nav.access">アクセス</a>
+
+            <a href="reservation.html" class="nav-reservation" data-i18n="nav.reservation">予約する</a>
+
+            <!-- Language switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"
+                    data-i18n-aria="lang.label" aria-label="言語を選択">
+                    <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18" />
+                        <path d="M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" />
+                    </svg>
+                    <span id="lang-current">JA</span>
+                    <svg class="lang-caret" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor"
+                        stroke-width="1.4" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" />
+                    </svg>
+                </button>
+                <ul class="lang-menu" role="list">
+                    <li><button type="button" data-lang="ja" lang="ja">日本語</button></li>
+                    <li><button type="button" data-lang="en" lang="en">English</button></li>
+                    <li><button type="button" data-lang="zh" lang="zh-CN">中文</button></li>
+                    <li><button type="button" data-lang="ko" lang="ko">한국어</button></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- Page hero -->
+        <section class="page-hero">
+            <p class="page-hero-label">CONTACT</p>
+            <h1 data-i18n="contact.title">お問い合わせ</h1>
+        </section>
+
+        <!-- Contact info -->
+        <section class="contact section">
+
+            <p class="contact-lead reveal" data-i18n="contact.lead">
+                ご予約・ご質問・団体でのご利用など、お気軽にお問い合わせください。<br>お電話は営業時間内に承っております。
+            </p>
+
+            <div class="contact-tel reveal">
+                <span class="contact-tel-label" data-i18n="access.tel">TEL</span>
+                <a class="contact-tel-number" href="tel:0924135223">092-413-5223</a>
+                <span class="contact-tel-hours" data-i18n="access.hours">11:00 ～ 21:30（L.O. 21:00）</span>
+            </div>
+
+            <div class="access-content contact-detail">
+
+                <div class="access-info reveal">
+
+                    <h3 data-i18n="access.name">寿司 博多魚がし</h3>
+
+                    <dl class="access-list">
+                        <div>
+                            <dt data-i18n="contact.address.label">住所</dt>
+                            <dd data-i18n="access.address">福岡県福岡市博多区博多駅中央街1-1<br>JR博多駅 B1F 博多1番街内</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="access.tel">TEL</dt>
+                            <dd><a href="tel:0924135223">092-413-5223</a></dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="access.hours.label">営業時間</dt>
+                            <dd data-i18n="access.hours">11:00 ～ 21:30（L.O. 21:00）</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="access.seats.label">席数</dt>
+                            <dd data-i18n="access.seats">24席（終日禁煙）</dd>
+                        </div>
+                    </dl>
+
+                    <a class="text-link" target="_blank" rel="noopener"
+                        href="https://www.google.com/maps/search/?api=1&query=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20%E5%8D%9A%E5%A4%9A1%E7%95%AA%E8%A1%97">
+                        <span data-i18n="access.mapLink">Googleマップで開く</span>
+                    </a>
+
+                </div>
+
+                <div class="map-wrap reveal">
+                    <iframe id="map-frame" title="寿司 博多魚がしの地図" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                        src="https://maps.google.com/maps?q=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20%E5%8D%9A%E5%A4%9A1%E7%95%AA%E8%A1%97&hl=ja&z=17&output=embed"></iframe>
+                </div>
+
+            </div>
+
+            <div class="contact-cta reveal">
+                <p data-i18n="contact.reserve.text">オンラインでのご予約も承っております。</p>
+                <a href="reservation.html" class="btn btn-primary" data-i18n="rsv.cta">今すぐ予約する</a>
+                <a href="index.html" class="text-link"><span data-i18n="contact.back">ホームへ戻る</span></a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+    <footer class="footer">
+
+        <div class="footer-logo" data-i18n="footer.name">寿司 博多魚がし</div>
+
+        <div class="footer-links">
+            <a href="index.html" data-i18n="footer.home">ホーム</a>
+            <a href="menu.html" data-i18n="footer.menu">メニュー</a>
+            <a href="reservation.html" data-i18n="footer.reservation">予約</a>
+            <a href="contact.html" data-i18n="footer.contactLink">お問い合わせ</a>
+        </div>
+
+
+        <p class="copyright">© 2026 寿司 博多魚がし. All Rights Reserved.</p>
+
+    </footer>
+
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>

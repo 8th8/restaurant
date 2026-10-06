@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>寿司 博多魚がし | 博多1番街</title>
+    <meta name="description" content="毎朝、福岡市魚市場から直送。JR博多駅 博多1番街の寿司 博多魚がし。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero {
+            background-image: url(/60e7265a-cf61-4b91-a606-9f6376a3b855.png);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="home">
+
+    <!-- =========================
+         Header
+    ========================== -->
+    <header class="header">
+
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-main">博多魚がし</span>
+                <span class="logo-sub">SUSHI</span>
+            </a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+            aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="site-nav">
+
+            <a href="index.html" data-i18n="nav.home">ホーム</a>
+
+            <a href="menu.html" data-i18n="nav.menu">メニュー</a>
+
+            <a href="#about" data-i18n="nav.about">私たちについて</a>
+
+            <a href="#access" data-i18n="nav.access">アクセス</a>
+
+            <a href="reservation.html" class="nav-reservation" data-i18n="nav.reservation">予約する</a>
+
+            <!-- Language switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"
+                    data-i18n-aria="lang.label" aria-label="言語を選択">
+                    <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18" />
+                        <path d="M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" />
+                    </svg>
+                    <span id="lang-current">JA</span>
+                    <svg class="lang-caret" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor"
+                        stroke-width="1.4" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" />
+                    </svg>
+                </button>
+                <ul class="lang-menu" role="list">
+                    <li><button type="button" data-lang="ja" lang="ja">日本語</button></li>
+                    <li><button type="button" data-lang="en" lang="en">English</button></li>
+                    <li><button type="button" data-lang="zh" lang="zh-CN">中文</button></li>
+                    <li><button type="button" data-lang="ko" lang="ko">한국어</button></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             Hero
+        ========================== -->
+        <section class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <p class="hero-subtitle" data-i18n="hero.sub">SUSHI RESTAURANT</p>
+
+                <h1>Fresh from<br>the Fish Market.</h1>
+
+                <p class="hero-description" data-i18n="hero.desc">
+                    毎朝、福岡市魚市場から直送。<br>自慢の厳選ネタをお手軽価格でお楽しみください。
+                </p>
+
+                <a href="reservation.html" class="btn btn-primary" data-i18n="hero.cta">ご予約はこちら</a>
+
+            </div>
+
+            <a href="#about" class="hero-scroll" aria-label="Scroll">
+                <span data-i18n="hero.scroll">SCROLL</span>
+                <i></i>
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             About
+        ========================== -->
+        <section id="about" class="about section">
+
+            <div class="section-title reveal">
+                <p>ABOUT US</p>
+                <h2 data-i18n="about.title">魚市場直送の味を、<br>お手軽価格で。</h2>
+            </div>
+
+            <div class="about-content">
+
+                <div class="about-image reveal">
+                    <img onerror="this.style.visibility='hidden'"
+                        src="https://www.hakata-1bangai.com/data/shops/13/13_2_m.jpg" alt="寿司 博多魚がし">
+                </div>
+
+                <div class="about-text reveal">
+
+                    <p data-i18n="about.p1">寿司 博多魚がしでは、新鮮な玄海の幸をお子様から大人の方まで存分に堪能していただけます。</p>
+
+                    <p data-i18n="about.p2">毎朝“福岡市魚市場”から魚貝類を一括仕入れ。旬のネタ・素材にこだわって、職人が一つ一つ手で握ります。</p>
+
+                    <p data-i18n="about.p3">メニューは約70種類。お値段はお手軽に、味や鮮度はもちろん一級品。ぜひご賞味ください。</p>
+
+                    <a href="menu.html" class="text-link"><span data-i18n="about.link">メニューを見る</span></a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Our Promise (3 points)
+        ========================== -->
+        <section class="promise section">
+
+            <div class="section-title center reveal">
+                <p data-i18n="point.label">OUR PROMISE</p>
+                <h2 data-i18n="point.title">私たちのこだわり</h2>
+            </div>
+
+            <div class="promise-list">
+
+                <article class="promise-item reveal">
+                    <span class="promise-no">01</span>
+                    <p class="promise-catch" data-i18n="point1.catch">仕入れるもの<br>選び抜くもの</p>
+                    <h3 data-i18n="point1.title">市場直送</h3>
+                    <p class="promise-text" data-i18n="point1.text">毎朝、福岡市魚市場から魚貝類を一括仕入れ。旬の鮮度をそのままお届けします。</p>
+                </article>
+
+                <article class="promise-item reveal">
+                    <span class="promise-no">02</span>
+                    <p class="promise-catch" data-i18n="point2.catch">握るもの<br>伝えるもの</p>
+                    <h3 data-i18n="point2.title">職人の手握り</h3>
+                    <p class="promise-text" data-i18n="point2.text">一貫一貫、職人が心を込めて手で握ります。素材の味を最大限に引き出します。</p>
+                </article>
+
+                <article class="promise-item reveal">
+                    <span class="promise-no">03</span>
+                    <p class="promise-catch" data-i18n="point3.catch">選べるもの<br>楽しめるもの</p>
+                    <h3 data-i18n="point3.title">約70種類</h3>
+                    <p class="promise-text" data-i18n="point3.text">お子様から大人まで。お手軽な価格で、豊富なメニューをお楽しみいただけます。</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Recommended Menu
+        ========================== -->
+        <section class="menu-preview section">
+
+            <div class="section-title center reveal">
+                <p data-i18n="menu.label">RECOMMENDED MENU</p>
+                <h2 data-i18n="menu.title">おすすめメニュー</h2>
+            </div>
+
+            <div class="menu-cards">
+
+                <!-- Menu 1 -->
+                <article class="menu-card reveal">
+                    <div class="menu-image">
+                        <img onerror="this.style.visibility='hidden'"
+                            src="https://www.hakata-1bangai.com/data/recommends/225/225_1_l.jpg" alt="Maguro Zukushi">
+                    </div>
+                    <div class="menu-info">
+                        <span class="menu-category">MAGURO</span>
+                        <h3 data-i18n="menu1.name">まぐろづくし</h3>
+                        <p data-i18n="menu1.desc">大とろ、中とろ、まぐろを食べ比べ。</p>
+                        <span class="price">¥2,376</span>
+                    </div>
+                </article>
+
+                <!-- Menu 2 -->
+                <article class="menu-card reveal">
+                    <div class="menu-image">
+                        <img onerror="this.style.visibility='hidden'"
+                            src="https://www.hakata-1bangai.com/data/recommends/296/296_1_l.jpg" alt="Dontaku Set">
+                    </div>
+                    <div class="menu-info">
+                        <span class="menu-category">SET</span>
+                        <h3 data-i18n="menu2.name">どんたくセット</h3>
+                        <p data-i18n="menu2.desc">大トロやイクラなど7貫と茶わん蒸しのお得なセット。</p>
+                        <span class="price">¥2,343</span>
+                    </div>
+                </article>
+
+                <!-- Menu 3 -->
+                <article class="menu-card reveal">
+                    <div class="menu-image">
+                        <img onerror="this.style.visibility='hidden'"
+                            src="https://www.hakata-1bangai.com/data/recommends/227/227_1_l.jpg" alt="Sashimi 5 Pieces">
+                    </div>
+                    <div class="menu-info">
+                        <span class="menu-category">SASHIMI</span>
+                        <h3 data-i18n="menu3.name">刺身5点盛り</h3>
+                        <p data-i18n="menu3.desc">旬の新鮮なお刺身を5種盛り合わせました。</p>
+                        <span class="price">¥2,376</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="center-button reveal">
+                <a href="menu.html" class="btn btn-secondary" data-i18n="menu.cta">すべてのメニューを見る</a>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Reservation CTA
+        ========================== -->
+        <section class="reservation-banner">
+
+            <div class="reservation-banner-content reveal">
+
+                <p class="eyebrow" data-i18n="rsv.label">ONLINE RESERVATION</p>
+
+                <h2 data-i18n="rsv.title">魚市場直送の味を<br>博多魚がしで。</h2>
+
+                <p class="reservation-text" data-i18n="rsv.text">
+                    ご希望の日付・時間・人数から<br>簡単にお席をご予約いただけます。
+                </p>
+
+                <a href="reservation.html" class="btn btn-primary" data-i18n="rsv.cta">今すぐ予約する</a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Access
+        ========================== -->
+        <section id="access" class="access section">
+
+            <div class="section-title center reveal">
+                <p>ACCESS</p>
+                <h2 data-i18n="access.title">アクセス</h2>
+            </div>
+
+            <div class="access-content">
+
+                <div class="access-info reveal">
+
+                    <h3 data-i18n="access.name">寿司 博多魚がし</h3>
+
+                    <p data-i18n="access.address">福岡県福岡市博多区博多駅中央街1-1<br>JR博多駅 B1F 博多1番街内</p>
+
+                    <dl class="access-list">
+                        <div>
+                            <dt data-i18n="access.tel">TEL</dt>
+                            <dd><a href="tel:0924135223">092-413-5223</a></dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="access.hours.label">営業時間</dt>
+                            <dd data-i18n="access.hours">11:00 ～ 21:30（L.O. 21:00）</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="access.seats.label">席数</dt>
+                            <dd data-i18n="access.seats">24席（終日禁煙）</dd>
+                        </div>
+                    </dl>
+
+                    <a class="text-link" target="_blank" rel="noopener"
+                        href="https://www.google.com/maps/search/?api=1&query=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20%E5%8D%9A%E5%A4%9A1%E7%95%AA%E8%A1%97">
+                        <span data-i18n="access.mapLink">Googleマップで開く</span>
+                    </a>
+
+                </div>
+
+                <!-- Google Map (src is set/refreshed by js/i18n.js; the src below is the initial fallback) -->
+                <div class="map-wrap reveal">
+                    <iframe id="map-frame" title="寿司 博多魚がしの地図" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                        src="https://maps.google.com/maps?q=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1%20%E5%8D%9A%E5%A4%9A1%E7%95%AA%E8%A1%97&hl=ja&z=17&output=embed"></iframe>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+    <footer class="footer">
+
+        <div class="footer-logo" data-i18n="footer.name">寿司 博多魚がし</div>
+
+        <div class="footer-links">
+            <a href="index.html" data-i18n="footer.home">ホーム</a>
+            <a href="menu.html" data-i18n="footer.menu">メニュー</a>
+            <a href="reservation.html" data-i18n="footer.reservation">予約</a>
+            <a href="contact.html" data-i18n="footer.contactLink">お問い合わせ</a>
+        </div>
+
+
+        <p class="copyright">© 2026 寿司 博多魚がし. All Rights Reserved.</p>
+
+    </footer>
+
+    <!-- Fixed vertical contact tab (stays on the right while scrolling) -->
+    <a href="contact.html" class="side-contact" data-i18n="footer.vertical">ーお問い合わせー</a>
+
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>

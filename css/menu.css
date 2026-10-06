@@ -1,0 +1,459 @@
+.menu-page {
+            background: #f8f5ef;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .menu-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Page title */
+        .page-title {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        .page-title span {
+            display: block;
+            color: #a27b4e;
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .page-title h1 {
+            font-family: serif;
+            font-size: 42px;
+            font-weight: normal;
+            color: #3c3028;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* Step */
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 8px;
+        }
+
+        .step.active {
+            color: #a27b4e;
+            font-weight: bold;
+        }
+
+        .step.active .step-number {
+            background: #a27b4e;
+            color: white;
+            border-color: #a27b4e;
+        }
+
+        .step-line {
+            width: 60px;
+            height: 1px;
+            background: #ddd;
+            margin: 0 15px;
+        }
+
+        /* Reservation summary */
+        .reservation-summary {
+            background: white;
+            border: 1px solid #e6ded3;
+            padding: 25px 30px;
+            margin-bottom: 40px;
+        }
+
+        .reservation-summary h2 {
+            font-family: serif;
+            font-size: 22px;
+            font-weight: normal;
+            color: #3c3028;
+            margin-bottom: 20px;
+        }
+
+        .reservation-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            border-left: 2px solid #c5a47e;
+            padding-left: 15px;
+        }
+
+        .info-item small {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .info-item strong {
+            color: #3c3028;
+            font-size: 16px;
+        }
+
+        /* Menu category */
+        .menu-category {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .category-title h2 {
+            font-family: serif;
+            font-size: 28px;
+            font-weight: normal;
+            color: #3c3028;
+            margin: 0;
+        }
+
+        .category-title span {
+            margin-left: 15px;
+            color: #a27b4e;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* Menu grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border: 1px solid #e8e0d7;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        .menu-content h3 {
+            color: #3c3028;
+            font-family: serif;
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0 0 8px;
+        }
+
+        .menu-description {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 45px;
+            margin-bottom: 12px;
+        }
+
+        .menu-price {
+            color: #a27b4e;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Quantity */
+        .quantity-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .quantity-area span {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #cdbba6;
+            background: white;
+            color: #6d5137;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantity-btn:hover {
+            background: #a27b4e;
+            color: white;
+        }
+
+        .quantity {
+            width: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #3c3028;
+        }
+
+        /* Total */
+        .total-box {
+            position: sticky;
+            bottom: 20px;
+            background: #3c3028;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .total-price {
+            font-size: 25px;
+            font-weight: bold;
+            color: #d9b27c;
+        }
+
+        .next-button {
+            display: inline-block;
+            background: #a27b4e;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .next-button:hover {
+            background: #84633e;
+        }
+
+        /* Empty menu */
+        .empty-message {
+            text-align: center;
+            color: #888;
+            padding: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reservation-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-title h1 {
+                font-size: 32px;
+            }
+
+            .steps {
+                transform: scale(0.85);
+            }
+
+            .step-line {
+                width: 25px;
+                margin: 0 5px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-info {
+                grid-template-columns: 1fr;
+            }
+
+            .total-box {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        /* Options */
+        .option-notice {
+            background: #fffaf2;
+            border: 1px solid #eadbc8;
+            padding: 18px 25px;
+            margin-bottom: 40px;
+            color: #6d5b48;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .option-area {
+            border-top: 1px dashed #e3dacd;
+            margin-top: 15px;
+            padding-top: 12px;
+        }
+
+        .option-title {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .option-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .option-chip {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .option-chip input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .option-chip span {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid #cdbba6;
+            background: white;
+            color: #6d5137;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .option-chip input:checked+span {
+            background: #a27b4e;
+            border-color: #a27b4e;
+            color: white;
+        }
+
+        .option-chip input:focus-visible+span {
+            outline: 2px solid #a27b4e;
+            outline-offset: 2px;
+        }
+
+        .option-hint {
+            color: #aaa;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .option-portion {
+            margin-bottom: 10px;
+        }
+
+        .option-portion-label {
+            color: #6d5137;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        /* Category navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .menu-category {
+            scroll-margin-top: 20px;
+        }
+
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 45px;
+        }
+
+        .category-nav a {
+            padding: 10px 22px;
+            border: 1px solid #cdbba6;
+            background: white;
+            color: #6d5137;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .category-nav a:hover {
+            background: #a27b4e;
+            border-color: #a27b4e;
+            color: white;
+        }
+
+        .category-note {
+            margin: -10px 0 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .menu-card.no-image .menu-content {
+            padding: 24px 20px;
+        }
+
+        .menu-card.no-image .menu-price {
+            margin-bottom: 15px;
+        }
