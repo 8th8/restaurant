@@ -449,11 +449,100 @@ button {
         linear-gradient(180deg, rgba(10, 16, 22, 0.55) 0%, rgba(10, 16, 22, 0.35) 45%, rgba(10, 16, 22, 0.65) 100%);
 }
 
+/* =========================
+   HERO CONTENT
+========================= */
+
 .hero-content {
     position: relative;
-    z-index: 1;
-    padding: 120px 24px 100px;
-    max-width: 820px;
+    z-index: 2;
+    max-width: 650px;
+    padding: 40px;
+    color: #fff;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.45);
+}
+
+/* SUSHI RESTAURANT */
+.hero-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 22px;
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.hero-subtitle::before,
+.hero-subtitle::after {
+    content: "";
+    display: block;
+    width: 35px;
+    height: 1px;
+    background: #f5c542;
+}
+
+/* Main title */
+.hero-content h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -2px;
+    color: #fff;
+}
+
+/* Japanese description */
+.hero-description {
+    margin: 30px 0 34px;
+    font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+
+    font-size: 18px;
+    line-height: 2;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+/* Button */
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 30px;
+    border: 1px solid #f5c542;
+    border-radius: 2px;
+    background: #f5c542;
+    color: #5b1830;
+    font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+
+    background: #fff;
+    color: #5b1830;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 .hero-subtitle {
