@@ -423,6 +423,9 @@ button {
    Hero
 ========================================================= */
 .hero {
+    background-image: url(../image/sushi.png);
+    background-size: cover;
+    background-position: center;
     position: relative;
     min-height: 100vh;
     min-height: 100svh;
