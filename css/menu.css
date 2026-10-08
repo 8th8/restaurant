@@ -1,7 +1,11 @@
-.menu-page {
+/* =====================================================
+           MENU PAGE
+        ===================================================== */
+
+        .menu-page {
             background: #f8f5ef;
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: calc(110px + env(safe-area-inset-bottom));
         }
 
         .menu-container {
@@ -10,7 +14,10 @@
             margin: 0 auto;
         }
 
-        /* Page title */
+        /* =====================================================
+           PAGE TITLE
+        ===================================================== */
+
         .page-title {
             text-align: center;
             padding: 70px 20px 40px;
@@ -37,7 +44,10 @@
             font-size: 15px;
         }
 
-        /* Step */
+        /* =====================================================
+           STEP
+        ===================================================== */
+
         .steps {
             display: flex;
             justify-content: center;
@@ -81,7 +91,10 @@
             margin: 0 15px;
         }
 
-        /* Reservation summary */
+        /* =====================================================
+           RESERVATION SUMMARY
+        ===================================================== */
+
         .reservation-summary {
             background: white;
             border: 1px solid #e6ded3;
@@ -120,9 +133,122 @@
             font-size: 16px;
         }
 
-        /* Menu category */
+        /* =====================================================
+           OPTION NOTICE
+        ===================================================== */
+
+        .option-notice {
+            background: #fffaf2;
+            border: 1px solid #eadbc8;
+            padding: 18px 25px;
+            margin-bottom: 30px;
+            color: #6d5b48;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* =====================================================
+           CATEGORY NAVIGATION
+        ===================================================== */
+
+        /*
+         * 以前の scroll-behavior / anchor navigation を廃止。
+         * JavaScriptで表示するカテゴリーを切り替える。
+         */
+
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+
+            position: sticky;
+            top: var(--header-h, 76px);
+            z-index: 80;
+
+            padding: 15px 10px;
+
+            background: rgba(248, 245, 239, 0.97);
+            backdrop-filter: blur(8px);
+
+            border-bottom: 1px solid #e6ded3;
+        }
+
+        .category-nav button {
+            padding: 11px 24px;
+
+            border: 1px solid #cdbba6;
+            background: white;
+
+            color: #6d5137;
+
+            font-size: 14px;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        .category-nav button:hover {
+            background: #a27b4e;
+            border-color: #a27b4e;
+            color: white;
+        }
+
+        .category-nav button.active {
+            background: #a27b4e;
+            border-color: #a27b4e;
+            color: white;
+
+            font-weight: bold;
+
+            box-shadow: 0 4px 12px rgba(162, 123, 78, 0.25);
+        }
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
         .menu-category {
             margin-bottom: 50px;
+
+            /*
+             * css/style.css cũng có .menu-category (dùng cho trang chủ:
+             * chữ đỏ, nhỏ, giãn chữ 0.3em). Đặt lại để không ảnh hưởng
+             * toàn bộ nội dung của danh mục ở trang menu.
+             */
+            display: block;
+            font-family: inherit;
+            font-size: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+
+            /*
+             * Category switching animation
+             */
+            animation: categoryFade 0.3s ease;
+        }
+
+        @keyframes categoryFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*
+         * Khi user chọn một category,
+         * các category khác sẽ bị ẩn hoàn toàn.
+         */
+        .menu-category.hidden {
+            display: none;
         }
 
         .category-title {
@@ -146,29 +272,48 @@
             letter-spacing: 2px;
         }
 
-        /* Menu grid */
+        .category-note {
+            margin: -10px 0 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           MENU GRID
+        ===================================================== */
+
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
+        /* =====================================================
+           MENU CARD
+        ===================================================== */
+
         .menu-card {
             background: white;
             border: 1px solid #e8e0d7;
+
             transition: 0.3s;
+
             overflow: hidden;
         }
 
-        .menu-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        @media (hover: hover) {
+            .menu-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            }
         }
 
         .menu-image {
             width: 100%;
             height: 190px;
+
             object-fit: cover;
+
             background: #ddd;
         }
 
@@ -176,35 +321,52 @@
             padding: 20px;
         }
 
+        .menu-card.no-image .menu-content {
+            padding: 24px 20px;
+        }
+
         .menu-content h3 {
             color: #3c3028;
+
             font-family: serif;
+
             font-size: 20px;
             font-weight: normal;
+
             margin: 0 0 8px;
         }
 
         .menu-description {
             color: #888;
+
             font-size: 13px;
             line-height: 1.7;
+
             min-height: 45px;
+
             margin-bottom: 12px;
         }
 
         .menu-price {
             color: #a27b4e;
+
             font-size: 17px;
             font-weight: bold;
+
             margin-bottom: 15px;
         }
 
-        /* Quantity */
+        /* =====================================================
+           QUANTITY
+        ===================================================== */
+
         .quantity-area {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             border-top: 1px solid #eee;
+
             padding-top: 15px;
         }
 
@@ -222,14 +384,21 @@
         .quantity-btn {
             width: 30px;
             height: 30px;
+
             border: 1px solid #cdbba6;
+
             background: white;
             color: #6d5137;
+
             cursor: pointer;
+
             font-size: 18px;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
+            transition: 0.2s;
         }
 
         .quantity-btn:hover {
@@ -239,125 +408,37 @@
 
         .quantity {
             width: 20px;
+
             text-align: center;
+
             font-weight: bold;
+
             color: #3c3028;
         }
 
-        /* Total */
-        .total-box {
-            position: sticky;
-            bottom: 20px;
-            background: #3c3028;
-            color: white;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 40px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .total-label {
-            font-size: 14px;
-            color: #ddd;
-        }
-
-        .total-price {
-            font-size: 25px;
-            font-weight: bold;
-            color: #d9b27c;
-        }
-
-        .next-button {
-            display: inline-block;
-            background: #a27b4e;
-            color: white;
-            padding: 15px 35px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        .next-button:hover {
-            background: #84633e;
-        }
-
-        /* Empty menu */
-        .empty-message {
-            text-align: center;
-            color: #888;
-            padding: 30px;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .reservation-info {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .page-title h1 {
-                font-size: 32px;
-            }
-
-            .steps {
-                transform: scale(0.85);
-            }
-
-            .step-line {
-                width: 25px;
-                margin: 0 5px;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .reservation-info {
-                grid-template-columns: 1fr;
-            }
-
-            .total-box {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
-
-        /* Options */
-        .option-notice {
-            background: #fffaf2;
-            border: 1px solid #eadbc8;
-            padding: 18px 25px;
-            margin-bottom: 40px;
-            color: #6d5b48;
-            font-size: 13px;
-            line-height: 1.9;
-        }
+        /* =====================================================
+           OPTIONS
+        ===================================================== */
 
         .option-area {
             border-top: 1px dashed #e3dacd;
+
             margin-top: 15px;
             padding-top: 12px;
         }
 
         .option-title {
             color: #999;
+
             font-size: 12px;
+
             margin-bottom: 8px;
         }
 
         .option-list {
             display: flex;
             flex-wrap: wrap;
+
             gap: 8px;
         }
 
@@ -368,34 +449,47 @@
 
         .option-chip input {
             position: absolute;
+
             opacity: 0;
+
             pointer-events: none;
         }
 
         .option-chip span {
             display: inline-block;
+
             padding: 6px 12px;
+
             border: 1px solid #cdbba6;
+
             background: white;
+
             color: #6d5137;
+
             font-size: 12px;
+
             transition: 0.2s;
         }
 
         .option-chip input:checked+span {
             background: #a27b4e;
+
             border-color: #a27b4e;
+
             color: white;
         }
 
         .option-chip input:focus-visible+span {
             outline: 2px solid #a27b4e;
+
             outline-offset: 2px;
         }
 
         .option-hint {
             color: #aaa;
+
             font-size: 12px;
+
             margin: 0;
         }
 
@@ -405,55 +499,309 @@
 
         .option-portion-label {
             color: #6d5137;
+
             font-size: 12px;
+
             font-weight: bold;
+
             margin-bottom: 6px;
         }
 
-        /* Category navigation */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .menu-category {
-            scroll-margin-top: 20px;
-        }
-
-        .category-nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 45px;
-        }
-
-        .category-nav a {
-            padding: 10px 22px;
-            border: 1px solid #cdbba6;
-            background: white;
+        .option-subtitle {
             color: #6d5137;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: 0.3s;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin: 10px 0 7px;
         }
 
-        .category-nav a:hover {
-            background: #a27b4e;
-            border-color: #a27b4e;
+        .option-subtitle-second {
+            border-top: 1px dashed #e3dacd;
+
+            padding-top: 12px;
+
+            margin-top: 14px;
+        }
+
+        /* =====================================================
+           TOTAL
+        ===================================================== */
+
+        /*
+         * Thanh tổng tiền: cố định ở đáy màn hình (fixed).
+         * Trước đây dùng sticky trong .menu-container nên khi đổi
+         * category / cuộn lên xuống thanh bị nhảy và lệch vị trí.
+         */
+        .total-box {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 90;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+
+            padding: 14px max(16px, calc((100vw - min(90vw, 1100px)) / 2)) calc(14px + env(safe-area-inset-bottom));
+            line-height: 1.3;
+
+            background: #3c3028;
+            color: white;
+
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Số lượng + tiền gộp trên MỘT dòng */
+        .total-summary {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .total-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .total-label {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        .total-count {
+            font-size: 17px;
+            font-weight: bold;
             color: white;
         }
 
-        .category-note {
-            margin: -10px 0 20px;
-            color: #888;
-            font-size: 12px;
+        .total-price {
+            font-size: 25px;
+            font-weight: bold;
+            color: #d9b27c;
         }
 
-        .menu-card.no-image .menu-content {
-            padding: 24px 20px;
+        .total-divider {
+            width: 1px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.25);
         }
 
-        .menu-card.no-image .menu-price {
-            margin-bottom: 15px;
+        .next-button {
+            display: inline-block;
+
+            background: #a27b4e;
+
+            color: white;
+
+            padding: 15px 35px;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s;
+
+            white-space: nowrap;
+            line-height: 1.4;
+        }
+
+        .next-button:hover {
+            background: #84633e;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reservation-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .page-title {
+                padding: 28px 16px 18px;
+            }
+
+            .page-title h1 {
+                font-size: 32px;
+            }
+
+            .steps {
+                margin-bottom: 20px;
+            }
+
+            .step {
+                font-size: 13px;
+            }
+
+            .step-number {
+                width: 28px;
+                height: 28px;
+                margin-right: 6px;
+            }
+
+            .step:not(.active) .step-label {
+                display: none;
+            }
+
+            .step:not(.active) .step-number {
+                margin-right: 0;
+            }
+
+            .step-line {
+                width: 28px;
+                margin: 0 8px;
+            }
+
+            .reservation-summary {
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+
+            .reservation-summary h2 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .reservation-info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .info-item {
+                padding-left: 10px;
+            }
+
+            .info-item strong {
+                font-size: 14px;
+            }
+
+            .option-notice {
+                padding: 14px 16px;
+                margin-bottom: 16px;
+                font-size: 12px;
+                line-height: 1.8;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-nav {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 8px;
+
+                margin-bottom: 20px;
+                margin-inline: -5vw;
+                padding: 8px 5vw;
+
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .category-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-nav button {
+                flex: 0 0 auto;
+                line-height: 1.4;
+
+                padding: 8px 14px;
+
+                font-size: 13px;
+                letter-spacing: 0;
+                white-space: nowrap;
+
+                border-radius: 999px;
+            }
+
+            .category-title {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .category-title span {
+                margin-left: 0;
+
+                margin-top: 5px;
+            }
+
+            .total-box {
+                gap: 10px;
+                padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+            }
+
+            .total-summary {
+                flex: 1;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .total-item {
+                gap: 5px;
+            }
+
+            .total-label {
+                font-size: 11px;
+            }
+
+            .total-count {
+                font-size: 15px;
+            }
+
+            .total-price {
+                font-size: 19px;
+            }
+
+            .next-button {
+                padding: 12px 14px;
+                font-size: 13px;
+                letter-spacing: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            :root {
+                --header-h: 56px;
+            }
+
+            .header {
+                padding: 0 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+
+            .total-label {
+                display: none;
+            }
+
+            .total-box {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
