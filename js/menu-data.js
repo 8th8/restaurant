@@ -9,24 +9,32 @@ const menuData = {
     options: ["さび抜き", "シャリ少なめ", "炙り"],
     specialChoice: true,
     specialOptions: ["茶わん蒸し", "あら汁"],
+    specialTitle: "まず、お料理を1つお選びください",
+    specialAlert:
+      "どんたくセットは、\n「茶わん蒸し」または「あら汁」を\n1つ選択してください。",
   },
 
   set2: {
     name: "ちょっと一杯セット",
     price: 1969,
-    options: ["さび抜き", "シャリ少なめ", "炙り"],
+    options: [],
+    specialChoice: true,
+    specialOptions: ["生ビール", "ハイボール"],
+    specialTitle: "お飲み物を1つお選びください",
+    specialAlert:
+      "ちょっと一杯セットは、\n「生ビール」または「ハイボール」を\n1つ選択してください。",
   },
 
   set3: {
     name: "極味(きわみ)",
     price: 2695,
-    options: ["さび抜き", "シャリ少なめ", "炙り"],
+    options: ["さび抜き", "シャリ少なめ"],
   },
 
   maguro: {
     name: "まぐろづくし",
     price: 2376,
-    options: ["さび抜き", "シャリ少なめ", "炙り"],
+    options: ["さび抜き", "シャリ少なめ"],
   },
 
   ebi: {
@@ -161,10 +169,9 @@ function showCategory(categoryId, button) {
       category.classList.remove("hidden");
     });
   } else {
-
-  /*
-   * 特定カテゴリー
-   */
+    /*
+     * 特定カテゴリー
+     */
     categories.forEach(function (category) {
       if (category.id === categoryId) {
         category.classList.remove("hidden");
@@ -271,7 +278,7 @@ function renderOptions(menuId) {
         "つ目" +
         "</div>" +
         '<div class="option-subtitle">' +
-        "まず、お料理を1つお選びください" +
+        (menu.specialTitle || "まず、お料理を1つお選びください") +
         "</div>" +
         '<div class="option-list">';
 
@@ -298,42 +305,46 @@ function renderOptions(menuId) {
           "</label>";
       });
 
-      html +=
-        "</div>" +
-        '<div class="option-subtitle option-subtitle-second">' +
-        "次に、ご希望のオプションを1つお選びください" +
-        "</div>" +
-        '<div class="option-list">';
+      html += "</div>";
 
-      optionList.forEach(function (label) {
+      if (optionList.length > 0) {
         html +=
-          '<label class="option-chip">' +
-          '<input type="radio" ' +
-          'name="normal-' +
-          menuId +
-          "-" +
-          i +
-          '" ' +
-          (normalOption === label ? "checked " : "") +
-          "onchange=\"selectNormalOption('" +
-          menuId +
-          "'," +
-          i +
-          ",'" +
-          label +
-          "')\">" +
-          "<span>" +
-          label +
-          "</span>" +
-          "</label>";
-      });
+          '<div class="option-subtitle option-subtitle-second">' +
+          "次に、ご希望のオプションを1つお選びください" +
+          "</div>" +
+          '<div class="option-list">';
 
-      html += "</div>" + "</div>";
+        optionList.forEach(function (label) {
+          html +=
+            '<label class="option-chip">' +
+            '<input type="radio" ' +
+            'name="normal-' +
+            menuId +
+            "-" +
+            i +
+            '" ' +
+            (normalOption === label ? "checked " : "") +
+            "onchange=\"selectNormalOption('" +
+            menuId +
+            "'," +
+            i +
+            ",'" +
+            label +
+            "')\">" +
+            "<span>" +
+            label +
+            "</span>" +
+            "</label>";
+        });
+
+        html += "</div>";
+      }
+
+      html += "</div>";
     } else {
-
-    /*
-     * 通常メニュー
-     */
+      /*
+       * 通常メニュー
+       */
       html +=
         '<div class="option-portion">' +
         '<div class="option-portion-label">' +
@@ -450,7 +461,15 @@ if (reservationData) {
     reservationData.guests + " 名";
 
   document.getElementById("reservation-table").textContent =
-    "テーブル " + reservationData.table;
+    reservationData.seatType === "counter"
+      ? reservationData.table
+      : "テーブル " + reservationData.table;
+
+  document.getElementById("reservation-name").textContent =
+    reservationData.name || "---";
+
+  document.getElementById("reservation-phone").textContent =
+    reservationData.phone || "---";
 }
 
 /* =====================================================
@@ -529,7 +548,7 @@ function updateSelectedMenuCount() {
 function goToConfirm() {
   const selectedItems = [];
 
-  let hasInvalidDontaku = false;
+  let invalidAlert = "";
 
   Object.keys(selectedMenus).forEach(function (menuId) {
     const quantity = selectedMenus[menuId];
@@ -557,7 +576,7 @@ function goToConfirm() {
           saved && saved.normalOption ? saved.normalOption : "";
 
         if (!specialChoice) {
-          hasInvalidDontaku = true;
+          invalidAlert = menu.specialAlert || "選択してください。";
 
           continue;
         }
@@ -578,10 +597,9 @@ function goToConfirm() {
 
         groups[key].quantity++;
       } else {
-
-      /*
-       * 通常メニュー
-       */
+        /*
+         * 通常メニュー
+         */
         const chosen = (selectedOptions[menuId] || [])[i] || [];
 
         const opts = (menu.options || []).filter(function (o) {
@@ -621,12 +639,8 @@ function goToConfirm() {
    * どんたくセットチェック
    */
 
-  if (hasInvalidDontaku) {
-    alert(
-      "どんたくセットは、\n" +
-        "「茶わん蒸し」または「あら汁」を\n" +
-        "1つ選択してください。",
-    );
+  if (invalidAlert) {
+    alert(invalidAlert);
 
     return;
   }

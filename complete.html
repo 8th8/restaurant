@@ -477,8 +477,9 @@
             document.getElementById(
                 "detail-table"
             ).textContent =
-                "Table " +
-                reservationData.table;
+                reservationData.seatType === "counter"
+                    ? reservationData.table
+                    : "Table " + reservationData.table;
 
 
             /*
@@ -514,7 +515,10 @@
                     reservationData.guests,
 
                 table:
-                    reservationData.table
+                    reservationData.table,
+
+                name:
+                    reservationData.name
 
             });
 

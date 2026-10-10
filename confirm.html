@@ -183,10 +183,36 @@
                     <div class="info-row">
 
                         <span class="info-label">
-                            テーブル
+                            お席
                         </span>
 
                         <span class="info-value" id="confirm-table">
+                            ---
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            お名前
+                        </span>
+
+                        <span class="info-value" id="confirm-name">
+                            ---
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            電話番号
+                        </span>
+
+                        <span class="info-value" id="confirm-phone">
                             ---
                         </span>
 
@@ -385,7 +411,21 @@
             document.getElementById(
                 "confirm-table"
             ).textContent =
-                "テーブル " + reservationData.table;
+                reservationData.seatType === "counter"
+                    ? reservationData.table
+                    : "テーブル " + reservationData.table;
+
+
+            document.getElementById(
+                "confirm-name"
+            ).textContent =
+                reservationData.name || "---";
+
+
+            document.getElementById(
+                "confirm-phone"
+            ).textContent =
+                reservationData.phone || "---";
 
         }
 

@@ -14,6 +14,182 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+    <style>
+        /* ---------- Seat type tabs ---------- */
+        .seat-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .seat-tab {
+            flex: 1;
+            padding: 12px 10px;
+            background: #fff;
+            border: 1px solid #d8d2ca;
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+
+        .seat-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        /* ---------- Counter (U-shape) ---------- */
+        .counter-wrap {
+            display: none;
+        }
+
+        .counter-wrap.show {
+            display: block;
+        }
+
+        .counter-hint {
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .counter-u {
+            display: grid;
+            grid-template-columns: 56px 1fr 56px;
+            grid-template-rows: auto 56px;
+            gap: 10px;
+            padding: 22px 16px;
+            background: var(--paper-warm);
+            border: 1px solid var(--line);
+        }
+
+        .counter-left,
+        .counter-right {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .counter-bottom {
+            grid-column: 1 / 4;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .counter-kitchen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 200px;
+            border: 1px dashed #cdbba6;
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            line-height: 1.8;
+            background: #fff;
+        }
+
+        .counter-seat {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 auto;
+            padding: 0;
+            border-radius: 50%;
+            border: 1px solid #cdbba6;
+            background: #fff;
+            font-family: var(--latin);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s, color .2s, border-color .2s, transform .15s;
+        }
+
+        .counter-seat:hover:not(.unavailable) {
+            border-color: var(--accent);
+            transform: scale(1.08);
+        }
+
+        .counter-seat.selected {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .counter-seat.unavailable {
+            background: #e9e6e0;
+            color: #b5b0a7;
+            border-color: #e4dfd6;
+            cursor: not-allowed;
+        }
+
+        .counter-legend {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .counter-legend i {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: -1px;
+            border: 1px solid #cdbba6;
+            background: #fff;
+        }
+
+        .counter-legend i.sel {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .counter-legend i.na {
+            background: #e9e6e0;
+        }
+
+        @media (max-width: 480px) {
+            .counter-u {
+                grid-template-columns: 40px 1fr 40px;
+                padding: 14px 8px;
+                gap: 6px;
+            }
+
+            .counter-seat {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .counter-bottom {
+                gap: 3px;
+            }
+
+            .counter-left,
+            .counter-right {
+                gap: 5px;
+            }
+
+            .counter-kitchen {
+                min-height: 120px;
+                font-size: 11px;
+                letter-spacing: .1em;
+            }
+        }
+
+        .flatpickr-input[readonly] {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="page" data-title="meta.title.reservation">
@@ -204,7 +380,7 @@
                                     <span data-i18n="res.date">ご来店日</span>
                                     <span class="required" data-i18n="res.required">必須</span>
                                 </label>
-                                <input type="date" id="reservationDate" required>
+                                <input type="text" id="reservationDate" placeholder="日付を選択してください" readonly required>
                                 <p class="field-error" id="err-date" role="alert" hidden></p>
                             </div>
 
@@ -271,6 +447,13 @@
                             ご利用人数に合わせてご希望のテーブルを選択してください。
                         </div>
 
+                        <div class="seat-tabs" role="tablist">
+                            <button type="button" class="seat-tab active" id="tabTable" data-mode="table" role="tab"
+                                data-i18n="res.tab.table">テーブル席</button>
+                            <button type="button" class="seat-tab" id="tabCounter" data-mode="counter" role="tab"
+                                data-i18n="res.tab.counter">カウンター席</button>
+                        </div>
+
                         <div class="table-list" id="tableList">
                             <div class="table-card" data-table="A" data-seats="2" tabindex="0" role="button">
                                 <div class="table-icon"></div>
@@ -307,6 +490,22 @@
                                 <div class="table-name">Table F</div>
                                 <div class="table-seats"></div>
                                 <div class="table-status"></div>
+                            </div>
+                        </div>
+
+                        <!-- Counter seats (U-shape, 1-25) -->
+                        <div class="counter-wrap" id="counterWrap">
+                            <p class="counter-hint" id="counterHint"></p>
+                            <div class="counter-u">
+                                <div class="counter-left" id="counterLeft"></div>
+                                <div class="counter-kitchen" data-i18n="res.counter.kitchen">調理場<br>（職人の手元が見えます）</div>
+                                <div class="counter-right" id="counterRight"></div>
+                                <div class="counter-bottom" id="counterBottom"></div>
+                            </div>
+                            <div class="counter-legend">
+                                <span><i></i><span data-i18n="res.status.free">空席</span></span>
+                                <span><i class="sel"></i><span data-i18n="res.legend.sel">選択中</span></span>
+                                <span><i class="na"></i><span data-i18n="res.status.full">予約済み</span></span>
                             </div>
                         </div>
 
@@ -359,6 +558,8 @@
     <!-- Fixed vertical contact tab -->
     <a href="contact.html" class="side-contact" data-i18n="footer.vertical">ーお問い合わせー</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ja.js"></script>
     <script src="js/i18n.js"></script>
     <script>
         (function () {
@@ -366,9 +567,13 @@
 
             var MAX_GUESTS = 10;
             var RESERVED_TABLE = 'D';   // demo: table already reserved
+            var RESERVED_COUNTER = [5, 6, 14, 15];   // demo: counter seats already reserved
+            var COUNTER_TOTAL = 25;
 
             var guests = 2;
             var selectedTable = null;
+            var seatMode = 'table';     // 'table' | 'counter'
+            var selectedCounter = [];   // counter seat numbers
 
             var $ = function (id) { return document.getElementById(id); };
             var T = function (key) { return window.siteT ? (window.siteT(key) || '') : ''; };
@@ -395,14 +600,22 @@
                 });
             }
 
-            /* ---------- Date: minimum = today (local time) ---------- */
-            (function () {
-                var d = new Date();
-                var y = d.getFullYear();
-                var mo = ('0' + (d.getMonth() + 1)).slice(-2);
-                var da = ('0' + d.getDate()).slice(-2);
-                dateInput.min = y + '-' + mo + '-' + da;
-            })();
+            /* ---------- Date: Japanese calendar, minimum = today ---------- */
+            if (window.flatpickr) {
+                flatpickr(dateInput, {
+                    locale: 'ja',
+                    dateFormat: 'Y-m-d',          // value stored as YYYY-MM-DD
+                    altInput: true,
+                    altFormat: 'Y年n月j日（D）',   // shown to the user in Japanese
+                    minDate: 'today',
+                    disableMobile: true,
+                    onChange: function () { clearError('date'); }
+                });
+            } else {
+                dateInput.type = 'date';
+                dateInput.removeAttribute('readonly');
+                dateInput.lang = 'ja';
+            }
 
             /* ---------- Seat icon: table + chairs drawn as SVG ---------- */
             function seatIcon(n) {
@@ -463,11 +676,84 @@
                         card.classList.remove('selected');
                     }
                 });
+                while (selectedCounter.length > guests) selectedCounter.shift();
+                paintCounter();
                 renderSelected();
             }
 
+            /* ---------- Counter seats (U shape: 1-8 / 9-18 / 19-25) ---------- */
+            var counterBtns = {};
+            function makeSeat(n) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'counter-seat';
+                b.textContent = n;
+                b.setAttribute('aria-label', 'Counter ' + n);
+                if (RESERVED_COUNTER.indexOf(n) !== -1) {
+                    b.classList.add('unavailable');
+                    b.disabled = true;
+                }
+                b.addEventListener('click', function () { pickCounter(n); });
+                counterBtns[n] = b;
+                return b;
+            }
+            (function buildCounter() {
+                var left = $('counterLeft'), bottom = $('counterBottom'), right = $('counterRight');
+                var n;
+                for (n = 1; n <= 8; n++) left.appendChild(makeSeat(n));
+                for (n = 9; n <= 18; n++) bottom.appendChild(makeSeat(n));
+                for (n = COUNTER_TOTAL; n >= 19; n--) right.appendChild(makeSeat(n));
+                right.style.justifyContent = 'flex-end';
+            })();
+
+            function paintCounter() {
+                Object.keys(counterBtns).forEach(function (k) {
+                    counterBtns[k].classList.toggle('selected', selectedCounter.indexOf(Number(k)) !== -1);
+                });
+                $('counterHint').textContent = fmt('res.counter.hint', guests);
+            }
+
+            function pickCounter(n) {
+                var i = selectedCounter.indexOf(n);
+                if (i !== -1) {
+                    selectedCounter.splice(i, 1);
+                } else {
+                    selectedCounter.push(n);
+                    if (selectedCounter.length > guests) selectedCounter.shift();
+                }
+                selectedCounter.sort(function (a, b) { return a - b; });
+                clearError('table');
+                paintCounter();
+                renderSelected();
+            }
+
+            function counterLabel() {
+                return 'カウンター ' + selectedCounter.join(', ');
+            }
+
+            function setMode(mode) {
+                seatMode = mode;
+                $('tabTable').classList.toggle('active', mode === 'table');
+                $('tabCounter').classList.toggle('active', mode === 'counter');
+                $('tableList').style.display = mode === 'table' ? '' : 'none';
+                $('counterWrap').classList.toggle('show', mode === 'counter');
+                clearError('table');
+                renderSelected();
+            }
+            $('tabTable').addEventListener('click', function () { setMode('table'); });
+            $('tabCounter').addEventListener('click', function () { setMode('counter'); });
+
             function renderSelected() {
-                if (selectedTable) {
+                if (seatMode === 'counter') {
+                    if (selectedCounter.length) {
+                        $('selectedTableLabel').textContent = T('res.counter.selected');
+                        $('selectedTableName').textContent = selectedCounter.join(', ') +
+                            '（' + selectedCounter.length + '/' + guests + '）';
+                        infoBox.classList.add('show');
+                    } else {
+                        infoBox.classList.remove('show');
+                    }
+                } else if (selectedTable) {
                     $('selectedTableLabel').textContent = T('res.table.selected');
                     $('selectedTableName').textContent = 'Table ' + selectedTable;
                     infoBox.classList.add('show');
@@ -484,6 +770,11 @@
                 });
                 nameInput.placeholder = T('res.name.ph');
                 phoneInput.placeholder = T('res.phone.ph');
+                $('counterHint').textContent = fmt('res.counter.hint', guests);
+                var et = $('err-table');
+                if (!et.hidden && et.getAttribute('data-i18n') === 'res.err.counter') {
+                    et.textContent = fmt('res.err.counter', guests);
+                }
                 renderSelected();
             }
 
@@ -543,7 +834,14 @@
                 if (!timeSelect.value) bad('time', 'res.err.time', timeSelect);
                 if (!nameInput.value.trim()) bad('name', 'res.err.name', nameInput);
                 if (!phoneOk(phoneInput.value)) bad('phone', 'res.err.phone', phoneInput);
-                if (!selectedTable) bad('table', 'res.err.table', cards[0]);
+                if (seatMode === 'counter') {
+                    if (selectedCounter.length !== guests) {
+                        bad('table', 'res.err.counter', $('tabCounter'));
+                        $('err-table').textContent = fmt('res.err.counter', guests);
+                    }
+                } else if (!selectedTable) {
+                    bad('table', 'res.err.table', cards[0]);
+                }
 
                 if (firstBad) {
                     firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -555,7 +853,8 @@
                     date: dateInput.value,
                     time: timeSelect.value,
                     guests: guests,
-                    table: selectedTable,
+                    seatType: seatMode,
+                    table: seatMode === 'counter' ? counterLabel() : selectedTable,
                     name: nameInput.value.trim(),
                     phone: normalizePhone(phoneInput.value)
                 };
